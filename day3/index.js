@@ -1,8 +1,5 @@
 const { wire1, wire2 } = require('./input')
 
-const testWire = ['R98', 'U47', 'R26', 'D63', 'R33', 'U87', 'L62', 'D20', 'R33', 'U53', 'R51']
-const testWire2 = ['U98', 'R91', 'D20', 'R16', 'D67', 'R40', 'U7', 'R15', 'U6', 'R7']
-
 const generateWireCoords = wirePath => {
     const coords = []
 
@@ -63,4 +60,36 @@ const findClosestIntersection = (wire1, wire2) => {
     return intersectDistance
 }
 
-console.log('The closest intersection is - ', findClosestIntersection(wire1, wire2))
+const findQuickestIntersection = (wire1, wire2) => {
+    const wire1Coords = generateWireCoords(wire1)
+    const wire2Coords = generateWireCoords(wire2)
+
+    console.log('wire coordinates', wire1Coords, wire2Coords)
+
+    let intersectionSteps = null
+
+    for (wire1Coord of wire1Coords) {
+        console.log('checking wire coord ', wire1Coord)
+        for (wire2Coord of wire2Coords) {
+            if (wire2Coord[0] === wire1Coord[0] && wire2Coord[1] === wire1Coord[1]) {
+                
+                const totalStep1 = wire1Coords.findIndex(
+                    coord => coord[0] === wire1Coord[0] && coord[1] === wire1Coord[1]
+                )
+                const totalStep2 = wire2Coords.findIndex(
+                    coord => coord[0] === wire2Coord[0] && coord[1] === wire2Coord[1]
+                )
+
+                const steps = totalStep1 + totalStep2 + 2
+                if (!intersectionSteps || steps < intersectionSteps) {
+                    intersectionSteps = steps
+                }
+            }
+        }
+    }
+
+    return intersectionSteps
+}
+
+// console.log('The closest intersection is - ', findClosestIntersection(wire1, wire2))
+console.log('The quickest intersection is - ', findQuickestIntersection(wire1, wire2))
