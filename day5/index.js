@@ -17,7 +17,10 @@ const intCode = (input, testInput) => {
 
         const opcode = parseInt('' + (initialCode[1] || 0) + initialCode[0], 10)
 
-        if (opcode === 99) break
+        if (opcode === 99) {
+            console.log('program finished running')
+            return
+        }
         if (opcode === 01) {
             pointerIncrement = 4
             const param1 = initialCode[2] === 1 ? inputCode[i + 1] : inputCode[inputCode[i + 1]]
@@ -38,12 +41,12 @@ const intCode = (input, testInput) => {
             pointerIncrement = 2
             const output = initialCode[2] === 1 ? inputCode[i + 1] : inputCode[inputCode[i + 1]]
             console.log('opcode 04 hit. Output value - ', output)
-            if(output !== 0 && inputCode[i + 2] !== 99){
-                console.log('something went wrong.  Current number is', i, 'initial value is', initialCode, 'opcode is', opcode)
-            } 
-            else if(inputCode[i + 2] === 99) {
-                console.log('program finished running')
-            }
+            // if(output !== 0 && inputCode[i + 2] !== 99){
+            //     console.log('something went wrong.  Current number is', i, 'initial value is', initialCode, 'opcode is', opcode)
+            // } 
+            // else if(inputCode[i + 2] === 99) {
+            //     console.log('program finished running')
+            // }
         }
         if (opcode === 05) {
             const param1 = initialCode[2] === 1 ? inputCode[i + 1] : inputCode[inputCode[i + 1]]
