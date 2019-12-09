@@ -1,14 +1,6 @@
 const { input } = require('./input')
 
 const test = [109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99]
-
-//[0: 109, 1: 1, 2: 204, 3: -1, 4: 1001, 5: 100, 6: 1, 7: 100, 8: 1008, ..., 100: 1, 101: 0] 
-//9 - relative base = 1
-//4 - output 109 (position 0)
-//1 - add 0 + 1 to position 100
-//8 - 0 is not equal to 16 so position 101 = 0
-//6 - 0 0 new pointer = 0
-
 const test2 = [1102, 34915192, 34915192, 7, 4, 7, 99, 0]
 const test3 = [104, 1125899906842624, 99]
 
@@ -134,12 +126,6 @@ const intCode = (inputArr, input, startingPointer) => {
 
 exports.run = () => {
     console.log('running int code computer...')
-    const result = intCode(input, 1, 0)
-    console.log('result', result.output)
-    // const result1 = intCode(test, 0, 0)
-    // const result2 = intCode(test2, 0, 0)
-    // const result3 = intCode(test3, 0, 0)
-    // console.log('result1', result1.output)
-    // console.log('result2', result2.output)
-    // console.log('result3', result3.output)
+    console.log('part 1 result', intCode(input, 1, 0))
+    console.log('part 2 result', intCode(input, 2, 0))
 }
