@@ -8,6 +8,8 @@ const calcFuel = (mass, totalFuel = 0) => {
     return calcFuel(fuelReq, totalFuel + fuelReq)
 }
 
-const reducedMassTotal = numbers.reduce((accum, curr) => (accum += calcFuel(curr)), 0)
+exports.run = () => {
+    const reducedMassTotal = numbers.reduce((accum, curr) => (accum += calcFuel(curr)), 0)
 
-console.log('The sum of fuel requirements is - ', reducedMassTotal)
+    console.log('The sum of fuel requirements is - ', reducedMassTotal)
+}

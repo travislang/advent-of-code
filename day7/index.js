@@ -21,7 +21,6 @@ const permutator = inputArr => {
 }
 
 const intCode = (inputArr, input, startingPointer, phaseSetting = null) => {
-
     let needsPhaseSetting = phaseSetting !== null ? true : false
     let pointerIncrement
     const inputCode = inputArr
@@ -53,7 +52,7 @@ const intCode = (inputArr, input, startingPointer, phaseSetting = null) => {
         if (opcode === 03) {
             pointerIncrement = 2
             inputCode[inputCode[i + 1]] = needsPhaseSetting ? phaseSetting : input
-            if(needsPhaseSetting){
+            if (needsPhaseSetting) {
                 needsPhaseSetting = false
             }
         }
@@ -145,7 +144,6 @@ const amplifierController = phaseSettings => {
 
     while (!finalPhaseOutput) {
         for (let i = 0; i < 5; i++) {
-
             let result =
                 sendPhaseSetting === true
                     ? intCode(
@@ -182,4 +180,9 @@ const findHighestSignal = phaseSettingsOptions => {
     return { finalOutput, finalPhaseSettings }
 }
 
-console.log('finding highest feedback loop output signal', findHighestSignal(phaseSettingsOptions))
+exports.run = () => {
+    console.log(
+        'finding highest feedback loop output signal',
+        findHighestSignal(phaseSettingsOptions)
+    )
+}

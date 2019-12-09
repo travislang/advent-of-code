@@ -53,4 +53,6 @@ const calculatePasswords = (min, max) => {
     return count
 }
 
-console.log('The amount of different passwords is - ', calculatePasswords(271973, 785961))
+exports.run = () => {
+    console.log('The amount of different passwords is - ', calculatePasswords(271973, 785961))
+}

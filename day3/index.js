@@ -48,7 +48,6 @@ const findClosestIntersection = (wire1, wire2) => {
         console.log('checking wire coord ', wire1Coord)
         for (wire2Coord of wire2Coords) {
             if (wire2Coord[0] === wire1Coord[0] && wire2Coord[1] === wire1Coord[1]) {
-                
                 const distance = Math.abs(wire1Coord[0]) + Math.abs(wire1Coord[1])
                 if (!intersectDistance || distance < intersectDistance) {
                     intersectDistance = distance
@@ -72,7 +71,6 @@ const findQuickestIntersection = (wire1, wire2) => {
         console.log('checking wire coord ', wire1Coord)
         for (wire2Coord of wire2Coords) {
             if (wire2Coord[0] === wire1Coord[0] && wire2Coord[1] === wire1Coord[1]) {
-                
                 const totalStep1 = wire1Coords.findIndex(
                     coord => coord[0] === wire1Coord[0] && coord[1] === wire1Coord[1]
                 )
@@ -91,5 +89,7 @@ const findQuickestIntersection = (wire1, wire2) => {
     return intersectionSteps
 }
 
-// console.log('The closest intersection is - ', findClosestIntersection(wire1, wire2))
-console.log('The quickest intersection is - ', findQuickestIntersection(wire1, wire2))
+exports.run = () => {
+    // console.log('The closest intersection is - ', findClosestIntersection(wire1, wire2))
+    console.log('The quickest intersection is - ', findQuickestIntersection(wire1, wire2))
+}

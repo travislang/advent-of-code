@@ -93,5 +93,7 @@ const intCode = (input, testInput) => {
     }
 }
 
-console.log('running intCode program with input of 5...')
-intCode(input, 5)
+exports.run = () => {
+    console.log('running intCode program with input of 5...')
+    intCode(input, 5)
+}

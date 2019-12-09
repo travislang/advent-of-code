@@ -24,5 +24,6 @@ const intCode = (input, noun, verb) => {
     }
 }
 
-
-console.log('intCode position 0 output = 19690720', intCode(numbers, 0, 0))
+exports.run = () => {
+    console.log('intCode position 0 output = 19690720', intCode(numbers, 0, 0))
+}
